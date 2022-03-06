@@ -1,5 +1,5 @@
 #include<stdio.h>
-#include<stdlib.h>
+#include<conio.h>
 int a,b,u,v,n,i,j,ne=1;
 int visited[10]={0},min,mincost=0,cost[10][10];
 void main()
@@ -9,19 +9,19 @@ void main()
 	scanf("%d",&n);
 	printf("\nEnter the adjacency matrix:\n");
 	for(i=1;i<=n;i++)
-		for(j=1;j<=n;j++)
-		{
-			scanf("%d",&cost[i][j]);
-			if(cost[i][j]==0)
-			cost[i][j]=999;
-		}
+	for(j=1;j<=n;j++)
+	{
+		scanf("%d",&cost[i][j]);
+		if(cost[i][j]==0)
+		cost[i][j]=999;
+	}
 	visited[1]=1;
 	printf("\n");
 	while(ne<n)
 	{
 		for(i=1,min=999;i<=n;i++)
-			for(j=1;j<=n;j++)
-				if(cost[i][j]<min)
+		for(j=1;j<=n;j++)
+		if(cost[i][j]<min)
 		if(visited[i]!=0)
 		{
 			min=cost[i][j];
@@ -30,13 +30,12 @@ void main()
 		}
 		if(visited[u]==0||visited[v]==0)
 		{
-					
 			printf("\nEdge %d:(%d %d) cost:%d",ne++,a,b,min);
 			mincost+=min;
 			visited[b]=1;
 		}
 		cost[a][b]=cost[b][a]=999;
 	}
-	printf("\nMinimum cost: %d\n",mincost);
-				
+	printf("\nMinimum cost:%d\n",mincost);
+	getch();
 }
